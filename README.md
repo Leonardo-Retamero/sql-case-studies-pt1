@@ -93,10 +93,59 @@ WHERE ai.country = 'Brazil'
 ORDER BY ai.ref_year;
 ```
 
+Análise:
+
+A consulta reúne diversos indicadores socioeconômicos para o Brasil, cruzando dados de renda, PIB, população, mortalidade infantil, fertilidade e expectativa de vida. Os dados são filtrados para os anos a cada década, entre 1900 e 2020, permitindo analisar tendências ao longo do tempo.
+
 Resultado:
 
 ![Resultado do Case 3](https://github.com/user-attachments/assets/3586455a-7e1a-4863-bd89-602e35def269)
 
+
+# 📌 Case 4 — Mortalidade Infantil e Natalidade nos Menores Países da Europa (Ano 2000)
+
+Pesquisar a taxa de mortalidade infantil e de natalidade nos seis menores países da Europa em termos de extensão territorial — Andorra, Liechtenstein, Malta, Mônaco, San Marino e Vaticano (Holy See) — no ano de 2000. A consulta deve utilizar as tabelas de mortalidade infantil e fertilidade, e aplicar a cláusula `LEFT JOIN` para garantir que todos os países sejam retornados, mesmo que não possuam dados em ambas as tabelas.
+
+Código SQL (Versão 1):
+
+```sql
+SELECT cm.country,
+       cm.tot_deaths,
+       f.mean_babies
+FROM child_mortality cm 
+LEFT JOIN fertility f ON cm.country = f.country
+    AND cm.ref_year = f.ref_year
+WHERE cm.country IN ('Andorra', 'Liechtenstein', 'Malta', 'Monaco', 'San Marino', 'Holy See')
+  AND cm.ref_year = 2000;
+```
+
+Análise (versão 1):
+
+Neste caso, apenas Malta possui dados na tabela de fertilidade para o ano de 2000. Se tivesse sido utilizado um INNER JOIN, somente Malta apareceria no resultado. O uso de LEFT JOIN permite visualizar todos os países, mesmo aqueles sem dados de natalidade. Um ponto curioso é a alta taxa de mortalidade infantil registrada no Vaticano.
+
+![Resultado](https://github.com/user-attachments/assets/58461621-6bfd-478c-9f6a-3ed40ec7468c)
+
+Código SQL (Versão 2):
+
+```sql
+SELECT cm.country,
+       cm.tot_deaths,
+       p.tot_pop, 
+       f.mean_babies
+FROM child_mortality cm 
+LEFT JOIN fertility f ON cm.country = f.country
+    AND cm.ref_year = f.ref_year
+LEFT JOIN population p ON cm.country = p.country
+    AND cm.ref_year = p.ref_year
+WHERE cm.country IN ('Andorra', 'Liechtenstein', 'Malta', 'Monaco', 'San Marino', 'Holy See')
+  AND cm.ref_year = 2000;
+```
+
+Análise (versão 2):
+
+Ao incluir os dados de população, observa-se que o número extremamente reduzido de habitantes no Vaticano pode influenciar artificialmente a taxa de mortalidade infantil, resultando em uma elevação incomum. Essa distorção sugere uma possível inconsistência ou erro nos dados para esse país.
+
+![Resultado](https://github.com/user-attachments/assets/403ccebd-cbe3-4653-9f70-9bfde5b04131)
 
 
 
