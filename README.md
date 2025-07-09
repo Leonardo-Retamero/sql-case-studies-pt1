@@ -1,4 +1,3 @@
----
 ### SQL Cases - Parte 1
 
 Este repositório reúne exercícios resolvidos (cases) do curso de SQL para Análise de Dados oferecido pela Fundação Getulio Vargas (FGV). O objetivo é aplicar na prática os conceitos aprendidos ao longo do curso, com foco em consultas, junções, agregações e filtragens de dados.
