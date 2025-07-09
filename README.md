@@ -16,7 +16,7 @@ Identificar os cinco países da Ásia em que os homens com 25 anos de idade tive
 
 Código SQL:
 
-```
+```sql
 SELECT m.country, 
        m.mean_years
 FROM men_years_at_school m
