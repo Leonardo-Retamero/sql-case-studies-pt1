@@ -28,9 +28,85 @@ LIMIT 5;
 ```
 
 Análise:
+
 A consulta filtra os países asiáticos no ano de 2009, considerando apenas a média de anos de estudo dos homens com 25 anos. Em seguida, os resultados são ordenados em ordem crescente e são exibidos os cinco países com os menores índices de escolaridade nesse grupo.
 
 Resultado:
 
 ![Resultado do Case 1](https://github.com/user-attachments/assets/c2db2904-d3af-4a87-9dbb-34e8d131c2bb)
+
+
+# 📌 Case 2 — Dez Países com Maior Renda Per Capita Diária em 1985
+
+Listar os 10 países com maior renda per capita diária no ano de 1985, indicando também a região e a classificação de renda segundo o Banco Mundial.
+
+Código SQL:
+
+```sql
+SELECT ai.country, 
+       c.wb_regions,
+       c.wb3income,
+       ai.mean_usd
+FROM avg_income ai 
+JOIN country c ON ai.country = c.country
+WHERE ai.ref_year = 1985
+ORDER BY ai.mean_usd DESC
+LIMIT 10;
+```
+
+Análise:
+
+A consulta relaciona as tabelas de renda média (avg_income) e de classificação/região do Banco Mundial (country). Ela filtra os dados para o ano de 1985 e ordena os países pela renda média diária em dólares americanos, exibindo os 10 maiores valores. Além da renda, a consulta apresenta a região e a classificação de renda do Banco Mundial para cada país listado.
+
+Resultado:
+
+![Resultado do Case 2](https://github.com/user-attachments/assets/a5821667-7a91-4021-8809-8b73d94c65ae)
+
+
+# 📌 Case 3 — Indicadores Socioeconômicos do Brasil de 1900 a 2020 (a cada 10 anos)
+
+Selecionar os dados do Brasil sobre renda per capita diária, PIB, população, mortalidade infantil, fertilidade e expectativa de vida, para o período de 1900 a 2020, considerando apenas os anos de década (1900, 1910, 1920, ..., 2020).
+
+Código SQL: 
+
+```sql
+SELECT ai.ref_year, 
+       ai.mean_usd, 
+       p.tot_pop, 
+       cm.tot_deaths, 
+       f.mean_babies, 
+       le.tot_years
+FROM avg_income ai
+JOIN gdp_pc gp ON ai.country = gp.country 
+    AND ai.ref_year = gp.ref_year
+JOIN population p ON ai.country = p.country 
+    AND ai.ref_year = p.ref_year
+JOIN child_mortality cm ON ai.country = cm.country 
+    AND ai.ref_year = cm.ref_year
+JOIN fertility f ON ai.country = f.country 
+    AND ai.ref_year = f.ref_year
+JOIN life_expectancy le ON ai.country = le.country 
+    AND ai.ref_year = le.ref_year
+WHERE ai.country = 'Brazil'
+  AND ai.ref_year BETWEEN 1900 AND 2020
+  AND ai.ref_year % 10 = 0
+ORDER BY ai.ref_year;
+```
+
+Resultado:
+
+![Resultado do Case 3](https://github.com/user-attachments/assets/3586455a-7e1a-4863-bd89-602e35def269)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
