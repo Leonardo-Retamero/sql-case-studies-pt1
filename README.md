@@ -16,14 +16,7 @@ Identificar os cinco países da Ásia em que os homens com 25 anos de idade tive
 
 Código SQL:
 
-SELECT m.country, 
-       m.mean_years
-FROM men_years_at_school m
-JOIN country c ON m.country = c.country
-WHERE m.ref_year = 2009
-  AND c.four_regions LIKE '%asia%'
-ORDER BY m.mean_years
-LIMIT 5;
+<pre> ```sql SELECT m.country, m.mean_years FROM men_years_at_school m JOIN country c ON m.country = c.country WHERE m.ref_year = 2009 AND c.four_regions LIKE '%asia%' ORDER BY m.mean_years LIMIT 5; ``` </pre>
 
 Análise:
 A consulta filtra os países asiáticos no ano de 2009, considerando apenas a média de anos de estudo dos homens com 25 anos. Em seguida, os resultados são ordenados em ordem crescente e são exibidos os cinco países com os menores índices de escolaridade nesse grupo.
