@@ -10,6 +10,8 @@ O código SQL utilizado na resolução
 
 Uma breve análise do resultado
 
+---
+
 # 📌 Case 1 — Países Asiáticos com Menor Escolaridade Masculina em 2009
 
 Identificar os cinco países da Ásia em que os homens com 25 anos de idade tiveram, em média, o menor número de anos de estudo no ano de 2009.
@@ -35,6 +37,7 @@ Resultado:
 
 ![Resultado do Case 1](https://github.com/user-attachments/assets/c2db2904-d3af-4a87-9dbb-34e8d131c2bb)
 
+---
 
 # 📌 Case 2 — Dez Países com Maior Renda Per Capita Diária em 1985
 
@@ -62,6 +65,7 @@ Resultado:
 
 ![Resultado do Case 2](https://github.com/user-attachments/assets/a5821667-7a91-4021-8809-8b73d94c65ae)
 
+---
 
 # 📌 Case 3 — Indicadores Socioeconômicos do Brasil de 1900 a 2020 (a cada 10 anos)
 
@@ -101,6 +105,7 @@ Resultado:
 
 ![Resultado do Case 3](https://github.com/user-attachments/assets/3586455a-7e1a-4863-bd89-602e35def269)
 
+---
 
 # 📌 Case 4 — Mortalidade Infantil e Natalidade nos Menores Países da Europa (Ano 2000)
 
