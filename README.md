@@ -1,5 +1,4 @@
----
-# SQL Cases - Parte 1
+### SQL Cases - Parte 1
 
 Este repositório reúne exercícios resolvidos (cases) do curso de SQL para Análise de Dados oferecido pela Fundação Getulio Vargas (FGV). O objetivo é aplicar na prática os conceitos aprendidos ao longo do curso, com foco em consultas, junções, agregações e filtragens de dados.
 
@@ -12,7 +11,7 @@ O código SQL utilizado na resolução
 Uma breve análise do resultado
 
 
-# 📌 Case 1 — Países Asiáticos com Menor Escolaridade Masculina em 2009
+### 📌 Case 1 — Países Asiáticos com Menor Escolaridade Masculina em 2009
 
 Identificar os cinco países da Ásia em que os homens com 25 anos de idade tiveram, em média, o menor número de anos de estudo no ano de 2009.
 
@@ -38,7 +37,7 @@ Resultado:
 ![Resultado do Case 1](https://github.com/user-attachments/assets/c2db2904-d3af-4a87-9dbb-34e8d131c2bb)
 
 
-# 📌 Case 2 — Dez Países com Maior Renda Per Capita Diária em 1985
+### 📌 Case 2 — Dez Países com Maior Renda Per Capita Diária em 1985
 
 Listar os 10 países com maior renda per capita diária no ano de 1985, indicando também a região e a classificação de renda segundo o Banco Mundial.
 
@@ -65,7 +64,7 @@ Resultado:
 ![Resultado do Case 2](https://github.com/user-attachments/assets/a5821667-7a91-4021-8809-8b73d94c65ae)
 
 
-# 📌 Case 3 — Indicadores Socioeconômicos do Brasil de 1900 a 2020 (a cada 10 anos)
+### 📌 Case 3 — Indicadores Socioeconômicos do Brasil de 1900 a 2020 (a cada 10 anos)
 
 Selecionar os dados do Brasil sobre renda per capita diária, PIB, população, mortalidade infantil, fertilidade e expectativa de vida, para o período de 1900 a 2020, considerando apenas os anos de década (1900, 1910, 1920, ..., 2020).
 
@@ -104,7 +103,7 @@ Resultado:
 ![Resultado do Case 3](https://github.com/user-attachments/assets/3586455a-7e1a-4863-bd89-602e35def269)
 
 
-# 📌 Case 4 — Mortalidade Infantil e Natalidade nos Menores Países da Europa (Ano 2000)
+### 📌 Case 4 — Mortalidade Infantil e Natalidade nos Menores Países da Europa (Ano 2000)
 
 Pesquisar a taxa de mortalidade infantil e de natalidade nos seis menores países da Europa em termos de extensão territorial — Andorra, Liechtenstein, Malta, Mônaco, San Marino e Vaticano (Holy See) — no ano de 2000. A consulta deve utilizar as tabelas de mortalidade infantil e fertilidade, e aplicar a cláusula `LEFT JOIN` para garantir que todos os países sejam retornados, mesmo que não possuam dados em ambas as tabelas.
 
