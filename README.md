@@ -148,6 +148,42 @@ Ao incluir os dados de população, observa-se que o número extremamente reduzi
 
 ![Resultado](https://github.com/user-attachments/assets/403ccebd-cbe3-4653-9f70-9bfde5b04131)
 
+---
+### 📌 Case 5 – Comparativo de Escolaridade entre Gêneros nos BRICS (2000)
+
+Realize uma consulta que traga, em um único resultado, o tempo médio de permanência na escola para homens e mulheres nos países do grupo BRICS (Brasil, Rússia, Índia, China e África do Sul) no ano de 2000. A consulta deve conter uma coluna adicional para indicar o gênero e permitir comparações diretas entre os países e entre os sexos.
+
+Código SQL:
+
+```sql
+SELECT m.country,
+	   m.mean_years, 'male' AS gender 
+FROM men_years_at_school m 
+WHERE m.country IN ('Brazil', 'Russia', 'China', 'India', 'South Africa')
+	 AND m.ref_year = 2000
+UNION 
+SELECT w.country,
+	   w.mean_years, 'female' AS gender
+FROM women_years_at_school w
+WHERE w.country IN ('Brazil', 'Russia', 'China', 'India', 'South Africa')
+	AND w.ref_year = 2000;
+```
+
+Análise:
+
+Esta consulta retorna os dados de escolaridade média (em anos) por país e por gênero nos BRICS no ano 2000. A estrutura do resultado permite uma comparação clara entre homens e mulheres em cada país.
+
+A coluna gender é usada para distinguir os dados masculinos e femininos.
+
+A combinação dos resultados oferece uma visão unificada e facilita a análise de desigualdade educacional.
+
+Mulheres podem ter ultrapassado os homens em escolaridade em alguns países, como Rússia.
+
+Em países como Índia ou África do Sul, podem persistir desigualdades significativas.
+
+Resultado:
+
+<img width="374" height="223" alt="image" src="https://github.com/user-attachments/assets/f3c94f77-eacd-4de1-8ce0-169cce5c0921" />
 
 
 
