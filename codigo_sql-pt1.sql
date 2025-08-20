@@ -1,0 +1,73 @@
+SELECT m.country, 
+       m.mean_years
+FROM men_years_at_school m
+JOIN country c ON m.country = c.country
+WHERE m.ref_year = 2009
+  AND c.four_regions LIKE '%asia%'
+ORDER BY m.mean_years
+LIMIT 5;
+
+SELECT ai.country, 
+       c.wb_regions,
+       c.wb3income,
+       ai.mean_usd
+FROM avg_income ai 
+JOIN country c ON ai.country = c.country
+WHERE ai.ref_year = 1985
+ORDER BY ai.mean_usd DESC
+LIMIT 10;
+
+SELECT ai.ref_year, 
+       ai.mean_usd, 
+       p.tot_pop, 
+       cm.tot_deaths, 
+       f.mean_babies, 
+       le.tot_years
+FROM avg_income ai
+JOIN gdp_pc gp ON ai.country = gp.country 
+    AND ai.ref_year = gp.ref_year
+JOIN population p ON ai.country = p.country 
+    AND ai.ref_year = p.ref_year
+JOIN child_mortality cm ON ai.country = cm.country 
+    AND ai.ref_year = cm.ref_year
+JOIN fertility f ON ai.country = f.country 
+    AND ai.ref_year = f.ref_year
+JOIN life_expectancy le ON ai.country = le.country 
+    AND ai.ref_year = le.ref_year
+WHERE ai.country = 'Brazil'
+  AND ai.ref_year BETWEEN 1900 AND 2020
+  AND ai.ref_year % 10 = 0
+ORDER BY ai.ref_year;
+
+SELECT cm.country,
+       cm.tot_deaths,
+       f.mean_babies
+FROM child_mortality cm 
+LEFT JOIN fertility f ON cm.country = f.country
+    AND cm.ref_year = f.ref_year
+WHERE cm.country IN ('Andorra', 'Liechtenstein', 'Malta', 'Monaco', 'San Marino', 'Holy See')
+  AND cm.ref_year = 2000;
+
+SELECT cm.country,
+       cm.tot_deaths,
+       p.tot_pop, 
+       f.mean_babies
+FROM child_mortality cm 
+LEFT JOIN fertility f ON cm.country = f.country
+    AND cm.ref_year = f.ref_year
+LEFT JOIN population p ON cm.country = p.country
+    AND cm.ref_year = p.ref_year
+WHERE cm.country IN ('Andorra', 'Liechtenstein', 'Malta', 'Monaco', 'San Marino', 'Holy See')
+  AND cm.ref_year = 2000;
+
+SELECT m.country,
+	   m.mean_years, 'male' AS gender 
+FROM men_years_at_school m 
+WHERE m.country IN ('Brazil', 'Russia', 'China', 'India', 'South Africa')
+	 AND m.ref_year = 2000
+UNION 
+SELECT w.country,
+	   w.mean_years, 'female' AS gender
+FROM women_years_at_school w
+WHERE w.country IN ('Brazil', 'Russia', 'China', 'India', 'South Africa')
+	AND w.ref_year = 2000;
